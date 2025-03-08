@@ -1,0 +1,24 @@
+ek framework ha api bnanany ka created by yangloo
+api => applicattion programming interface => it is way to connect/communicate with different servoices on the internet
+
+
+database => web server => api => internet => web applicattion
+
+decorator jo specific function hotay hain unmay add on functionalities denay ka kam decorator krtay hIN
+
+http => hyper text transfer protocol ya ek protocol ha jo internet pr communication ka kam deti ha
+
+
+sweegaer => api ki documentation krnay ka tareeka ha
+
+server => ek computer ha jahan hamri applications ka code hota ha
+
+Agar aap pip install streamlit karte hain, toh Streamlit system-wide install ho jata hai aur kisi bhi Python project mein use kiya ja sakta hai.
+
+Lekin agar aap uv ya virtual environment use karna chahtay hain, toh aap sirf us specific project ke andar streamlit install kar sakte hain, bina system-wide install kiye.
+
+🔹 Comparison: pip install vs uv
+Method	Scope	Usage
+pip install streamlit	System-wide	Har project mein use ho sakta hai
+uv pip install streamlit	Project-specific	Sirf usi project mein chalega
+Agar aap ek specific project ke andar Streamlit install karna chahte hain toh uv ya virtual environment (venv) ka use karna behtar hoga.
