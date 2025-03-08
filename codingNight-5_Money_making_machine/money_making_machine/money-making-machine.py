@@ -6,9 +6,9 @@ import os
 
 st.title("💰 Money Making Machine" )
 
-# Function to load CSS with correct path
+# Function to load CSS 
 def load_css():
-    css_path = os.path.join(os.path.dirname(__file__), "style.css")  # Get absolute path
+    css_path = os.path.join(os.path.dirname(__file__), "style.css")  
     try:
         with open(css_path, "r") as f:
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
