@@ -2,27 +2,28 @@ import streamlit as st
 import random
 import time
 import requests
-import pathlib
+import os
 
 st.title("💰 Money Making Machine" )
 
+# Function to load CSS with correct path
+def load_css():
+    css_path = os.path.join(os.path.dirname(__file__), "style.css")  # Get absolute path
+    try:
+        with open(css_path, "r") as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    except FileNotFoundError:
+        st.warning(f"⚠️ Warning: CSS file '{css_path}' not found.")
 
-#function to load css
+# Load the external CSS
+load_css()
 
-def load_css(file_path):
-    with open(file_path) as f:
-        st.html(f"<style>{f.read()}</style>")
-
-#load the external css
-css_path = pathlib.Path("style.css")
-load_css(css_path)
-
-#money making function
+# Money making function
 def generate_money():
     return random.randint(1, 1000)
 
 st.subheader("💵 Instant Cash Generator")
-if st.button("Generate Money" , key="green"):
+if st.button("Generate Money", key="green"):
     st.write("⏳ Counting Your Money...")    
     time.sleep(1)
     amount = generate_money()
@@ -40,10 +41,12 @@ def fetch_side_hustle():
         return "❌ Something went wrong"
 
 st.subheader("🚀 Side Hustle Ideas")
-if st.button("Generate Hustle" , key="pink"):
+if st.button("Generate Hustle", key="pink"):
     idea = fetch_side_hustle()
     st.info(idea)
 
+
+#money quotes function
 def money_quotes():
     try:
         response = requests.get("http://127.0.0.1:8000/money_quotes?api_key=1234567")
@@ -56,6 +59,6 @@ def money_quotes():
         return "❌ Something went wrong"
 
 st.subheader("💡 Money Making Motivation Quotes")
-if st.button("Get Money Quotes" , key = "blue"):
+if st.button("Get Money Quotes", key="blue"):
     quotes = money_quotes()
     st.info(quotes)
