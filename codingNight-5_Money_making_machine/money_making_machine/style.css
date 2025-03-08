@@ -1,0 +1,44 @@
+
+
+.st-key-green button {
+	background-color: green;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+
+
+.st-key-pink button {
+	background-color: rgb(221, 80, 104);
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+
+
+.st-key-blue button {
+	background-color: rgb(34, 170, 224);
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+
+.stApp{
+    background-color: black;
+}
+
+h1 {
+    color:white; /* Orange-Red */
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+h1, h2, h3, p, span {
+    color: white !important; /* Pure white text */
+    opacity: 1 !important; /* Remove transparency */
+}
