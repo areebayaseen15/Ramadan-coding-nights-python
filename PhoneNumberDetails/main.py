@@ -110,38 +110,41 @@ def predict_number_type(phone):
 # User input field with animation
 number = st.text_input("🔢 Enter your phone number with country code (e.g., +923001234567):")
 find_details = st.markdown('<button class="custom-button">🔍 Find Details</button>', unsafe_allow_html=True)
-if number or find_details:
-    with st.spinner("🔍 Searching for details..."):
-        time.sleep(2)  # Simulating delay
-    
+if number :
     try:
         phone = phonenumbers.parse(number)
-        time_zones = timezone.time_zones_for_number(phone)
-        sim_carrier = carrier.name_for_number(phone, "en")
-        region = geocoder.description_for_number(phone, "en")
-        is_valid = phonenumbers.is_valid_number(phone)
-        is_possible = phonenumbers.is_possible_number(phone)
-        num_type = phonenumbers.number_type(phone)
-        phone_fact = get_random_fact()
-        predicted_type = predict_number_type(number)
+        if not phonenumbers.is_valid_number(phone):
+            st.error("❌ Invalid phone number! Please check the format.")
+        else:
+            with st.spinner("🔍 Searching for details..."):
+                time.sleep(2)  # Simulating delay
 
-        num_type_text = {
-            phonenumbers.PhoneNumberType.MOBILE: "📱 Mobile",
-            phonenumbers.PhoneNumberType.FIXED_LINE: "☎️ Landline",
-            phonenumbers.PhoneNumberType.TOLL_FREE: "📞 Toll-Free",
-        }.get(num_type, "❓ Unknown")
+            time_zones = timezone.time_zones_for_number(phone)
+            sim_carrier = carrier.name_for_number(phone, "en")
+            region = geocoder.description_for_number(phone, "en")
+            is_valid = phonenumbers.is_valid_number(phone)
+            is_possible = phonenumbers.is_possible_number(phone)
+            num_type = phonenumbers.number_type(phone)
+            phone_fact = get_random_fact()
+            predicted_type = predict_number_type(number)
 
-        st.markdown("<h3 style='color:#007bff;'>📊 Phone Number Details:</h3>", unsafe_allow_html=True)
+            num_type_text = {
+                phonenumbers.PhoneNumberType.MOBILE: "📱 Mobile",
+                phonenumbers.PhoneNumberType.FIXED_LINE: "☎️ Landline",
+                phonenumbers.PhoneNumberType.TOLL_FREE: "📞 Toll-Free",
+                }.get(num_type, "❓ Unknown")
+
+            st.markdown("<h3 style='color:#007bff;'>📊 Phone Number Details:</h3>", unsafe_allow_html=True)
         
-        st.markdown(f"<div class='info-box'>📌 <b>Parsed Number:</b> {phone}</div>", unsafe_allow_html=True)
-        st.markdown(f"<div class='info-box'>⏰ <b>Time Zone:</b> {time_zones}</div>", unsafe_allow_html=True)
-        st.markdown(f"<div class='info-box'>📡 <b>SIM Provider:</b> {sim_carrier if sim_carrier else 'Unknown'}</div>", unsafe_allow_html=True)
-        st.markdown(f"<div class='info-box'>🌍 <b>Registered Region:</b> {region}</div>", unsafe_allow_html=True)
-        st.markdown(f"<div class='info-box'>✅ <b>Valid Number:</b> {'Yes' if is_valid else 'No'}</div>", unsafe_allow_html=True)
-        st.markdown(f"<div class='info-box'>🔢 <b>Possible Number:</b> {'Yes' if is_possible else 'No'}</div>", unsafe_allow_html=True)
-        st.markdown(f"<div class='info-box'>📊 <b>Number Type:</b> {num_type_text}</div>", unsafe_allow_html=True)
-        st.markdown(f"<div class='info-box'>🤖 <b>AI Prediction:</b> {predicted_type}</div>", unsafe_allow_html=True)
-        st.markdown(f"<div class='info-box'>💡 <b>Did You Know?</b> {phone_fact}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='info-box'>📌 <b>Parsed Number:</b> {phone}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='info-box'>⏰ <b>Time Zone:</b> {time_zones}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='info-box'>📡 <b>SIM Provider:</b> {sim_carrier if sim_carrier else 'Unknown'}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='info-box'>🌍 <b>Registered Region:</b> {region}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='info-box'>🔢 <b>Possible Number:</b> {'Yes' if is_possible else 'No'}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='info-box'>📊 <b>Number Type:</b> {num_type_text}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='info-box'>✅ <b>Valid Number:</b> {'Yes' if is_valid else 'No'}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='info-box'>🤖 <b>AI Prediction:</b> {predicted_type}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='info-box'>💡 <b>Did You Know?</b> {phone_fact}</div>", unsafe_allow_html=True)
 
     except phonenumbers.NumberParseException:
         st.error("❌ Invalid phone number format! Please enter a correct phone number.")
