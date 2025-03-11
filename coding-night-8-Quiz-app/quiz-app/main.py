@@ -20,6 +20,41 @@ quiz_questions = [
         "question": "What will bool([]) return?",
         "options": ["True", "False", "None", "Error"],
         "answer": "False"
+    },
+    {
+        "question": "What does the enumerate() function return?",
+        "options": ["A list of tuples containing index and value", "A dictionary", "A list of values", "A tuple with only indices"],
+        "answer": "A list of tuples containing index and value"
+    },
+    {
+        "question": "What will be the output of the following code? print(2 ** 3 ** 2)",
+        "options": ["512", "64", "36", "Error"],
+        "answer": "512"
+    },
+    {
+        "question": "What is the correct way to open a file in write mode?",
+        "options": ["open('file.txt', 'r')", "open('file.txt', 'w')", "open('file.txt', 'a')", "open('file.txt', 'x')"],
+        "answer": "open('file.txt', 'w')"
+    },
+    {
+        "question": "What does the following list comprehension do? [x for x in range(5) if x % 2 == 0]",
+        "options": ["Creates a list of numbers from 0 to 4", "Creates a list of even numbers from 0 to 4", "Creates a list of odd numbers from 0 to 4", "Throws an error"],
+        "answer": "Creates a list of even numbers from 0 to 4"
+    },
+    {
+        "question": "What will list('hello') return?",
+        "options": ["['hello']", "['h', 'e', 'l', 'l', 'o']", "('h', 'e', 'l', 'l', 'o')", "Error"],
+        "answer": "['h', 'e', 'l', 'l', 'o']"
+    },
+    {
+        "question": "What is the output of the following code? a = (1, 2, 3); a[0] = 5; print(a)",
+        "options": ["(5, 2, 3)", "(1, 2, 3)", "Error", "None"],
+        "answer": "Error"
+    },
+    {
+        "question": "What is the difference between deepcopy() and copy() in Python?",
+        "options": ["deepcopy() copies nested objects recursively, while copy() performs a shallow copy", "deepcopy() and copy() do the same thing", "copy() copies objects recursively, while deepcopy() does a shallow copy", "None of the above"],
+        "answer": "deepcopy() copies nested objects recursively, while copy() performs a shallow copy"
     }
 ]
 
