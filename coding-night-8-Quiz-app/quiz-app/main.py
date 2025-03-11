@@ -144,7 +144,7 @@ if st.button("Submit Answer"):
     else:
         st.error(f"❌ Incorrect! The correct answer is: {question['answer']}")
 
-    time.sleep(1.5)
+    time.sleep(3)
 
     # Selecting a new random question
     st.session_state.current_question = random.choice(quiz_questions)
