@@ -6,9 +6,9 @@ import os
 
 st.title("💰 Money Making Machine" )
 
-# Function to load CSS 
+# Function to load CSS with correct path
 def load_css():
-    css_path = os.path.join(os.path.dirname(__file__), "style.css")  
+    css_path = os.path.join(os.path.dirname(__file__), "style.css") 
     try:
         with open(css_path, "r") as f:
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
@@ -31,7 +31,7 @@ if st.button("Generate Money", key="green"):
 
 def fetch_side_hustle():
     try:
-        response = requests.get("http://127.0.0.1:8000/side_hustles?api_key=1234567")
+        response = requests.get("https://fastapi-money-quotes-side-hustles-5r3zs8fxd.vercel.app/side_hustles")
         if response.status_code == 200:
             hustle = response.json()
             return hustle["side_husttle"]
@@ -49,7 +49,7 @@ if st.button("Generate Hustle", key="pink"):
 #money quotes function
 def money_quotes():
     try:
-        response = requests.get("http://127.0.0.1:8000/money_quotes?api_key=1234567")
+        response = requests.get("https://fastapi-money-quotes-side-hustles-5r3zs8fxd.vercel.app/money_quotes")
         if response.status_code == 200:
             money_quotes = response.json()
             return money_quotes["money_quotes"]
